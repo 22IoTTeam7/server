@@ -9,7 +9,6 @@ floor5 = joblib.load('floor5Model')'''
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def t():
     test = "Test"
