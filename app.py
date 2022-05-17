@@ -1,5 +1,5 @@
 import joblib
-from flask import Flask, request, json
+from flask import Flask, request, json, jsonify
 import numpy as np
 
 floor2 = joblib.load('floor2Model.pkl')
@@ -30,10 +30,9 @@ def location():
                          content2['AP26'], content2['AP27'], content2['AP28'], content2['AP29'], content2['AP30'],
                          content2['AP31'], content2['AP32'], content2['AP33']
                          ])
-    floor = content2['Floor']
 
-    if floor == 2:
-        return floor2.predict(req_data)
+    result = {'predict_room': floor2.predict(req_data)}
+    return jsonify(result)
 
 
 @app.route('/location/floor4', methods=['GET', 'POST'])
@@ -49,10 +48,9 @@ def location():
                          content4['AP36'], content4['AP37'], content4['AP38'], content4['AP39'], content4['AP40'],
                          content4['AP41'],  content4['AP42'], content4['AP43'], content4['AP44']
                          ])
-    floor = content4['Floor']
 
-    if floor == 4:
-        return floor4.predict(req_data)
+    result = {'predict_room': floor4.predict(req_data)}
+    return jsonify(result)
 
 
 @app.route('/location/floor5', methods=['GET', 'POST'])
@@ -69,10 +67,9 @@ def location():
                          content5['AP41'], content5['AP42'], content5['AP43'], content5['AP44'], content5['AP45'],
                          content5['AP46'], content5['AP47'], content5['AP48'], content5['AP49']
                          ])
-    floor = content5['Floor']
 
-    if floor == 5:
-        return floor5.predict(req_data)
+    result = {'predict_room': floor5.predict(req_data)}
+    return jsonify(result)
 
 
 if __name__ == '__main__':
