@@ -94,6 +94,7 @@ def setdata2():
                          ], dtype=np.int)
     dbcontroller.insert_floor2(req_data)
 
+    return 'success'
 
 @app.route('/setData/floor4', methods=['GET', 'POST'])
 def setdata4():
@@ -112,9 +113,10 @@ def setdata4():
                          content4['AP31'], content4['AP32'], content4['AP33'], content4['AP34'], content4['AP35'],
                          content4['AP36'], content4['AP37'], content4['AP38'], content4['AP39'], content4['AP40'],
                          content4['AP41'], content4['AP42'], content4['AP43'], content4['AP44'], content4['Room']
-                         ])
+                         ], dtype=np.int)
     dbcontroller.insert_floor4(req_data)
 
+    return 'success'
 
 @app.route('/setData/floor5', methods=['GET', 'POST'])
 def setdata5():
@@ -135,9 +137,10 @@ def setdata5():
                          content5['AP36'], content5['AP37'], content5['AP38'], content5['AP39'], content5['AP40'],
                          content5['AP41'], content5['AP42'], content5['AP43'], content5['AP44'], content5['AP45'],
                          content5['AP46'], content5['AP47'], content5['AP48'], content5['AP49'], content5["Room"]
-                         ])
+                         ], dtype=np.int)
     dbcontroller.insert_floor5(req_data)
 
+    return 'success'
 
 if __name__ == '__main__':
     app.run()
