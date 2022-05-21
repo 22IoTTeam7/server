@@ -90,11 +90,13 @@ def setdata2():
                          content2.get("AP16"), content2.get("AP17"), content2.get("AP18"), content2.get("AP19"), content2.get("AP20"),
                          content2.get("AP21"), content2.get("AP22"), content2.get("AP23"), content2.get("AP24"), content2.get("AP25"),
                          content2.get("AP26"), content2.get("AP27"), content2.get("AP28"), content2.get("AP29"), content2.get("AP30"),
-                         content2.get("AP31"), content2.get("AP32"), content2.get("AP33"), content4.get("Room")
+                         content2.get("AP31"), content2.get("AP32"), content2.get("AP33"), content2.get("Room")
                          ], dtype=np.int)
     dbcontroller.insert_floor2(req_data)
 
-    return 'success'
+    response = {'result': 'success'}
+
+    return jsonify(response)
 
 
 @app.route('/setData/floor4', methods=['GET', 'POST'])
@@ -117,7 +119,9 @@ def setdata4():
                          ], dtype=np.int)
     dbcontroller.insert_floor4(req_data)
 
-    return 'success'
+    response = {'result': 'success'}
+
+    return jsonify(response)
 
 
 @app.route('/setData/floor5', methods=['GET', 'POST'])
@@ -142,7 +146,9 @@ def setdata5():
                          ], dtype=np.int)
     dbcontroller.insert_floor5(req_data)
 
-    return 'success'
+    response = {'result': 'success'}
+
+    return jsonify(response)
 
 
 if __name__ == '__main__':
