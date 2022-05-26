@@ -34,7 +34,7 @@ def location():
                          content2['AP31'], content2['AP32'], content2['AP33']
                          ])
 
-    result = {'predict_room': floor2.predict(req_data)}
+    result = {'result': 'Success', predict': floor2.predict(req_data)}
     return jsonify(result)
 
 
@@ -52,7 +52,7 @@ def location():
                          content4['AP41'],  content4['AP42'], content4['AP43'], content4['AP44']
                          ])
 
-    result = {'predict_room': floor4.predict(req_data)}
+    result = {'result': 'Success', predict': floor4.predict(req_data)}
     return jsonify(result)
 
 
@@ -71,7 +71,7 @@ def location():
                          content5['AP46'], content5['AP47'], content5['AP48'], content5['AP49']
                          ])
 
-    result = {'predict_room': floor5.predict(req_data)}
+    result = {'result': 'Success', predict': floor5.predict(req_data)}
     return jsonify(result)
 '''
 
