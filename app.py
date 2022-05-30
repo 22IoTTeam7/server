@@ -2,11 +2,11 @@ import joblib
 from flask import Flask, request, json, jsonify
 import numpy as np
 import dbconfig as db
-'''
+
 floor2 = joblib.load('floor2Model.pkl')
 floor4 = joblib.load('floor4Model.pkl')
 floor5 = joblib.load('floor5Model.pkl')
-'''
+
 
 app = Flask(__name__)
 
@@ -21,9 +21,8 @@ def t():
     return response
 
 
-'''
 @app.route('/location/floor2', methods=['GET', 'POST'])
-def location():
+def location2():
     content2 = request.get_json()
     req_data = np.array([content2['AP1'], content2['AP2'], content2['AP3'], content2['AP4'], content2['AP5'],
                          content2['AP6'], content2['AP7'], content2['AP8'], content2['AP9'], content2['AP10'],
@@ -33,13 +32,13 @@ def location():
                          content2['AP26'], content2['AP27'], content2['AP28'], content2['AP29'], content2['AP30'],
                          content2['AP31'], content2['AP32'], content2['AP33']
                          ])
-
-    result = {'result': 'Success', predict': floor2.predict(req_data)}
+    req_data = req_data.reshape(1, -1)
+    result = {'result': 'Success', 'predict': int(floor2.predict(req_data)[0])}
     return jsonify(result)
 
 
 @app.route('/location/floor4', methods=['GET', 'POST'])
-def location():
+def location4():
     content4 = request.get_json()
     req_data = np.array([content4['AP1'], content4['AP2'], content4['AP3'], content4['AP4'], content4['AP5'],
                          content4['AP6'], content4['AP7'], content4['AP8'], content4['AP9'], content4['AP10'],
@@ -51,13 +50,14 @@ def location():
                          content4['AP36'], content4['AP37'], content4['AP38'], content4['AP39'], content4['AP40'],
                          content4['AP41'],  content4['AP42'], content4['AP43'], content4['AP44']
                          ])
+    req_data = req_data.reshape(1, -1)
 
-    result = {'result': 'Success', predict': floor4.predict(req_data)}
+    result = {'result': 'Success', 'predict': int(floor4.predict(req_data)[0])}
     return jsonify(result)
 
 
 @app.route('/location/floor5', methods=['GET', 'POST'])
-def location():
+def location5():
     content5 = request.get_json()
     req_data = np.array([content5['AP1'], content5['AP2'], content5['AP3'], content5['AP4'], content5['AP5'],
                          content5['AP6'], content5['AP7'], content5['AP8'], content5['AP9'], content5['AP10'],
@@ -71,9 +71,9 @@ def location():
                          content5['AP46'], content5['AP47'], content5['AP48'], content5['AP49']
                          ])
 
-    result = {'result': 'Success', predict': floor5.predict(req_data)}
+    req_data = req_data.reshape(1, -1)
+    result = {'result': 'Success', 'predict': int(floor5.predict(req_data)[0])}
     return jsonify(result)
-'''
 
 
 @app.route('/setData/floor2', methods=['GET', 'POST'])
